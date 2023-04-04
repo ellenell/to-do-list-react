@@ -8,6 +8,11 @@ function App() {
   const [items, setItmes] = useState([])  
 
   function addItem() {
+    if (!newItem) {
+      alert("Enter an item")
+    }
+    
+    
     const item = {
       id: Math.floor(Math.random() * 1000), 
       value: newItem
@@ -37,7 +42,13 @@ function App() {
 
       <button onClick={() => addItem()}>Add Item</button>
 
-
+    <ul>
+      {items.map(item => {
+        return (
+          <li key={item.id}>{item.value}</li>
+        )
+      })}
+    </ul>
 
     </div>
   );
