@@ -4,7 +4,20 @@ import React, { useState } from 'react'
 function App() {
 
   // STATE HOOK
-  const [newItem, setNewItem] = useState(null)  
+  const [newItem, setNewItem] = useState('')
+  const [items, setItmes] = useState([])  
+
+  function addItem() {
+    const item = {
+      id: Math.floor(Math.random() * 1000), 
+      value: newItem
+    }
+
+    setItmes(oldList => [...oldList, item])
+
+    setNewItem('')
+  console.log(newItem)
+  }
   
   return (
     <div className="App">
@@ -19,10 +32,10 @@ function App() {
       type='text'
       placeholder="Add item here"
       value={newItem}
-      onChange= {e => setNewItem(e.target)}
+      onChange= {e => setNewItem(e.target.value)}
       />
 
-      <button>Add Item</button>
+      <button onClick={() => addItem()}>Add Item</button>
 
 
 
